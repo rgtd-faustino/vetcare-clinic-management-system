@@ -46,25 +46,6 @@ Key design decisions:
 - **Clinical record** — a central `HistoricoClinico` entity links all clinical event types: consultations, physical exams, vaccinations, deworming, surgeries, and therapeutic treatments.
 - **Genealogical tree** — `FichaClinicaAnimal` includes `idPai` and `idMae` foreign keys to itself, enabling recursive ancestry queries.
 
-### Relational Model
-
-The full relational schema (34 relations) is documented in [`RelationalModel.docx`](RelationalModel.docx).
-
-Key relations include:
-
-```
-CADEIA, CLINICA, CLIENTE, RECECIONISTA, ESPECIE, RACA,
-PREDGENETICA, CUIDADOSESPECIFICOS, RACA_PREDGENETICA,
-RACA_CUIDADOS_ESPECIFICOS, SERVICO_MEDICO, VETERINARIO,
-HORARIO, SERVICO_MEDICO_HORARIO, EXCECAO_HORARIO,
-VETERINARIO_SERVICO_MEDICO, SERVICO_DETALHE,
-FICHA_CLINICA_ANIMAL, ALERGIA, FICHA_CLINICA_ANIMAL_ALERGIA,
-AGENDAMENTO, HISTORICO_CLINICO, VETERINARIO_HISTORICO_CLINICO,
-SINTOMA, CONSULTA, CONSULTA_SINTOMA, EXAME_FISICO,
-RESULTADO_EXAME, VACINACAO, TRATAMENTO_TERAPEUTICO,
-CIRURGIA, DESPARASITACAO, AVALIACAO, RECECIONISTA_AGENDAMENTO
-```
-
 ### Integrity Constraints
 
 - **Entity integrity** — all primary keys are non-null and unique.
@@ -165,17 +146,14 @@ All injection payloads tested (UNION-based extraction, boolean blind, stacked qu
 ```
 vetcare-clinic-management-system/
 │
-├── vetdatabase.sql              # Full DDL + DML: schema, triggers, procedures, views, test data
-├── VetCareWeb.war               # Deployable web application (Apache Tomcat)
+├── app/
+│   └── VetCareWeb.war               # Deployable web application (Apache Tomcat)
+│
+├── database/
+│   └── vetdatabase.sql              # Full DDL + DML: schema, triggers, procedures, views, test data
 │
 ├── images/
-│   └── ea_model.png             # Entity-Association diagram
-│
-├── RelationalModel.docx         # Full relational schema documentation
-│
-├── docs/
-│   ├── Relatorio_TP1.pdf        # Part 1 report: conceptual and logical design
-│   └── Relatorio_TP2.pdf        # Part 2 report: web application and advanced features
+│   └── ea_model.png                 # Entity-Association diagram
 │
 └── README.md
 ```
