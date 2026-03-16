@@ -1,4 +1,4 @@
-# 🐾 VetCare — Veterinary Clinic Management System
+# VetCare — Veterinary Clinic Management System
 
 > A full-stack veterinary clinic management system built with MySQL, Java/JDBC, and Jakarta EE, designed for a multi-location chain of veterinary clinics.
 
